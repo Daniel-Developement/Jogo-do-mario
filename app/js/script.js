@@ -1,39 +1,64 @@
-let sliderElement = document.getElementById("slider");
-let buttonElement = document.getElementById('gerarSenha');
+const personagem = document.querySelector('.personagem');
+const pipe = document.querySelector('.pipe');
+const clouds = document.querySelector('.clouds');
+const reset = document.querySelector('.reset');
 
-let sizePassword = document.getElementById('valor');
-let password = document.getElementById('password');
+scope = document.getElementById("score")
 
-let containerPassword = document.getElementById('container-password');
-
-let charsert = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!@";
-let newPass = "";
-
-sizePassword.innerHTML = sliderElement.value;
-slider.oninput = function () {
-    sizePassword.innerHTML = this.value;
+const jump = () => {
+    personagem.classList.add('jump')
+    
+    setTimeout(() => {
+        personagem.classList.remove('jump')
+    }, 500);
 }
 
-buttonElement.addEventListener('click', () => {
-    generatePassword();
-})
+var n = 0;
+const conta = window.setInterval(function() {
+scope.innerHTML = 'Score: ' + n;
+n++;
+}, 100);
 
-password.addEventListener('click', () => {
-    copyPassowrd();
-})
 
-function generatePassword() {
-    let pass = "";
-    newPass = "";
-    for (let i = 0, n = charsert.length; i < sliderElement.value; ++i) {
-        pass += charsert.charAt(Math.floor(Math.random() * n))
+const loop = setInterval(() => {
+
+    const pipePosition = pipe.offsetLeft;
+    const personagemPosition = +window.getComputedStyle(personagem).bottom.replace('px', '');
+    const cloudsPosition = +window.getComputedStyle(clouds).right.replace('px', '');
+    
+    if(pipePosition <= 120 && pipePosition > 0 && personagemPosition < 100){
+        
+        pipe.style.animation = 'none';
+        pipe.style.left = `${pipePosition}px`;
+
+        personagem.style.animation = 'none';
+        personagem.style.bottom = `${personagemPosition}px`;
+
+        clouds.style.animation = 'none';
+        clouds.style.right = `${cloudsPosition}px`;
+
+        personagem.src = './app/img/game-over.png';
+        personagem.style.width = '75px';
+        personagem.style.marginLeft = '50px';
+
+        scope.innerHTML = 'Score: ' + n;
+
+        reset.style.display = 'block';
+
+        clearInterval(loop);
     }
-    containerPassword.classList.remove("hidden");
-    password.innerHTML = pass;
-    newPass = pass;
+    
+}, 1)
+
+const pipePosition = pipe.offsetLeft;
+const personagemPosition = +window.getComputedStyle(personagem).bottom.replace('px', '');
+
+if(pipePosition <= 120 && pipePosition > 0 && personagemPosition < 100){
+    
+    pipe.style.animation = 'none';
+    pipe.style.left = `${pipePosition}px`;
+    
 }
 
-function copyPassowrd() {
-    alert("Senha copiada com sucesso!");
-    navigator.clipboard.writeText(newPass);
-}
+document.addEventListener('keydown', jump);
+document.addEventListener('mousedown', jump);

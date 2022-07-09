@@ -1,97 +1,96 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
+.game-board {
+    width: 100%;
     height: 100vh;
-    background-color: #181818;
+    border-bottom: 15px solid rgb(35, 160, 35);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#87CEEB, #E0F6FF);
 }
 
-.container {
-    max-width: 488px;
-    display: flex;
-    flex-direction: column;
-    background-color: #121212;
-    border-radius: 5px;
-    padding: 30px;
+.pipe {
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    animation: pipe-animation 2s infinite linear;
 }
 
-.container .logo{
-    max-width: 600px;
-    width: 100%;
-    margin-bottom: 24px;
+.personagem {
+    width: 150px;
+    position: absolute;
+    bottom: 0;
 }
 
-.container .form{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.jump {
+    animation: jump 500ms ease-in-out;
 }
 
-.container .form span{
-    color: #fff;
-    font-size: 22px;
+.clouds {
+    position: absolute;
+    width: 500px;
+    animation: clouds-animation 10s infinite linear;
 }
 
-.container .form input {
-    width: 100%;
-    -webkit-appearance: none;
-    width: 100%;
-    border-radius: 5px;
-    background-color: #dfdfdf;
-    height: 18px;
-    outline: none;
-    margin-top: 18px;
-    margin-bottom: 25px;
-}
-
-.container .form button{
-    height: 40px;
-    background-color: #00ff00;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #fff;
-    font-weight: 600;
-    font-size: 18px;
-}
-
-.container .container-password{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 50px;
-}
-
-.container .container-password.hidden{
+.reset {
     display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100px;
+    height: 100px;
 }
 
-.container .container-password span{
-    width: 100%;
-    color: #fff;
-    text-align: center;
+.reset img {
+    width: 100px;
 }
 
-.container .container-password .title{
-    font-size: 20px;
-    margin-bottom: 5px;
+@keyframes pipe-animation {
+    from {
+        right: -80px;
+    }
+
+    to {
+        right: 100%;
+    }
 }
 
-.container .container-password .password{
-    padding: 10px;
-    background-color: #323232;
-    border-radius: 4px;
-    outline: none;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+@keyframes jump {
+    0% {
+        bottom: 0;
+    }
+
+    40% {
+        bottom: 180px;
+    }
+
+    50% {
+        bottom: 180px;
+    }
+
+    60% {
+        bottom: 180px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+@keyframes clouds-animation {
+    from {
+        right: -500px;
+    }
+
+    to {
+        right: 100%;
+    }
 }
