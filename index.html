@@ -4,19 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="pt_BR" />
+    <meta property="og:title" content="Daniel Silva" />
+    <meta property="og:description" content="Gerador de senhas seguras!" />
+    <meta name="application-name" content="Gerador de senhas" />
+    <meta name="description" content="Gerador de senhas seguras!" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gerador de senhas" />
+    <meta name="twitter:description" content="Gerador de senhas seguras!" />
+    <meta name="theme-color" content="#f93930" />
+    <meta name="google-site-verification" content="2WgIddvsPuHLm5j8marJgQZdZ1gmY_LnBVT0BYebG6s" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="app/css/style.css">
-    <title>Leinad Code</title>
+    <meta name="keywords" content="Gerador de senhas, gerador password">
+    <title>Gerador de senha</title>
 </head>
 <body>
-    <div class="game-board">
-        <h2 id="score">Score: 0</h2>
-        <img src="app/img/clouds.png" class="clouds" alt="Nuvens">
-        <img src="app/img/mario.gif" id="personagem" class="personagem" alt="personagem">
-        <img src="app/img/pipe.png" class="pipe" alt="">
-        <a class="reset" href="">
-            <img src="app/img/reset.png">
-        </a>
+    <div class="container">
+        <img class="logo" src="app/img/logo.png" alt="Logo">
+        <div class="form">
+            <span>Tamanho <span id="valor"></span> caracteres</span>
+            <input id="slider" type="range" class="slider" type="range" min="5" max="32" value="8">
+            <button type="submit" id="gerarSenha">Gerar senha</button>
+        </div>
+        <div id="container-password" class="container-password hidden">
+            <span class="title">Sua senha gerada foi :</span>
+            <button id="password" class="password"></button>
+            <span>Clique na senha para copiar. 📝</span>
+        </div>
     </div>
-</body>
     <script src="app/js/script.js"></script>
+</body>
 </html>
